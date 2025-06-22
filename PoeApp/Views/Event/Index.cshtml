@@ -1,0 +1,85 @@
+﻿@model IEnumerable<PoeApp.Models.Event>
+
+@{
+    ViewData["Title"] = "Event Info";
+}
+
+<h1>Event</h1>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary btn-sm">
+        <i class="bi bi-plus-circle"></i> Create New
+    </a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EventID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Venue)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Venue.VenueName)
+                </td>
+
+                <td class="d-flex justify-content-start">
+                    <a asp-action="Edit" asp-route-id="@item.EventID" class="btn btn-primary btn-sm me-3">
+                        Edit
+                    </a>
+                    <a asp-action="Details" asp-route-id="@item.EventID" class="btn btn-primary btn-sm me-3">
+                        Details
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.EventID" class="btn btn-primary btn-sm">
+                        Delete
+                    </a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

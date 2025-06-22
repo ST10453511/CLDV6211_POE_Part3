@@ -1,0 +1,39 @@
+﻿@model PoeApp.Models.Venue
+
+@{
+    ViewData["Title"] = "Venue Details";
+}
+
+<h2>Venue Details</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-4">Venue Name</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.VenueName)</dd>
+
+            <dt class="col-sm-4">Location</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Location)</dd>
+
+            <dt class="col-sm-4">Capacity</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Capacity)</dd>
+
+            <dt class="col-sm-4">Image</dt>
+            <dd class="col-sm-8">
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <img src="@Model.ImageUrl" alt="Venue Image" width="250" height="200" style="object-fit:cover; border-radius:10px;" />
+                }
+                else
+                {
+                    <span>No image uploaded</span>
+                }
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.VenueID" class="btn btn-warning">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

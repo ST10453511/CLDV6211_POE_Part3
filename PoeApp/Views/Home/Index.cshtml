@@ -1,0 +1,102 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .hero-section {
+        padding: 80px 20px;
+        background: linear-gradient(135deg, #f0f4ff, #ffffff);
+        text-align: center;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+        margin-bottom: 50px;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.4rem;
+        color: #555;
+        font-weight: 500;
+        margin-bottom: 40px;
+    }
+
+    .btn-venue {
+        background-color: #007bff;
+        color: white;
+        border: none;
+    }
+
+    .btn-venue:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+
+    .btn-event {
+        background-color: #28a745;
+        color: white;
+        border: none;
+    }
+
+    .btn-event:hover {
+        background-color: #1e7e34;
+        transform: scale(1.05);
+    }
+
+    .btn-booking {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+    }
+
+    .btn-booking:hover {
+        background-color: #a71d2a;
+        transform: scale(1.05);
+    }
+
+    .btn-lg-custom {
+        padding: 0.75rem 2rem;
+        font-size: 1.25rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        margin: 0 10px;
+    }
+
+    @@media (max-width: 576px) {
+        .hero-title {
+            font-size: 2rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+        }
+
+        .btn-lg-custom {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+        }
+    }
+</style>
+
+<div class="container hero-section">
+    <h1 class="hero-title">🎉 Welcome to the Event Planner of the Year!</h1>
+    <p class="hero-subtitle">Make booking venues, planning events, and managing your schedule easier than ever — all in one place!</p>
+
+    <div class="d-flex justify-content-center flex-wrap">
+        <a href="/Venue" class="btn btn-lg-custom btn-venue">
+            <i class="bi bi-building"></i> View Venues
+        </a>
+        <a href="/Event" class="btn btn-lg-custom btn-event">
+            <i class="bi bi-calendar-event"></i> View Events
+        </a>
+        <a href="/Booking" class="btn btn-lg-custom btn-booking">
+            <i class="bi bi-journal-bookmark"></i> View Bookings
+        </a>
+    </div>
+</div>
