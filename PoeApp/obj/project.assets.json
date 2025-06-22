@@ -7801,11 +7801,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lab_services_student\\Desktop\\CLDV6211_POE_Part2\\PoeApp\\PoeApp.csproj",
+      "projectUniqueName": "C:\\Users\\lab_services_student\\Desktop\\CLDV6211_POE_Part3\\PoeApp\\PoeApp.csproj",
       "projectName": "PoeApp",
-      "projectPath": "C:\\Users\\lab_services_student\\Desktop\\CLDV6211_POE_Part2\\PoeApp\\PoeApp.csproj",
+      "projectPath": "C:\\Users\\lab_services_student\\Desktop\\CLDV6211_POE_Part3\\PoeApp\\PoeApp.csproj",
       "packagesPath": "C:\\Users\\lab_services_student\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lab_services_student\\Desktop\\CLDV6211_POE_Part2\\PoeApp\\obj\\",
+      "outputPath": "C:\\Users\\lab_services_student\\Desktop\\CLDV6211_POE_Part3\\PoeApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

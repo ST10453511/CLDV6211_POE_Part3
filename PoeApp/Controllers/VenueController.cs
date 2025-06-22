@@ -141,7 +141,7 @@ namespace PoeApp.Controllers
 
         private async Task<string> UploadImageToBlobAsync(IFormFile imageFile)
         {
-            var connectionString = "DefaultEndpointsProtocol=https;AccountName=eventeasema;AccountKey=TvkVzYQ/aV3u6VoEVbuHj1Q5zP3njCz8NQaN2HNI6/o3/1DSC+mDwNl3M7ZcqkKbCJ7LJhZz+CKx+ASttY6hhg==;EndpointSuffix=core.windows.net";
+            var connectionString = "";
             var containerName = "cldv6211project";
 
             var blobServiceClient = new BlobServiceClient(connectionString);
