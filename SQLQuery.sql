@@ -78,3 +78,8 @@ SELECT * FROM Venue;
 SELECT * FROM Event;
 SELECT * FROM Booking;
 SELECT * FROM EventType;
+
+--Drop table Event;
+--Drop table Venue;
+--Drop table Booking;
+--Drop table EventType;

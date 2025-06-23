@@ -27,7 +27,7 @@
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="=" form-group">
+            <div class="form-group">
                 <label asp-for="VenueID" class="control-label"></label>
                 <select asp-for="VenueID" class="form-control">
                     <option value="">=-Select Venue ID --</option>
@@ -37,6 +37,15 @@
                     }
                 </select>
             </div>
+            <div class="form-group">
+                <label>Event Type</label>
+                <select asp-for="EventTypeID" class="form-control"
+                        asp-items="@(new SelectList((IEnumerable<EventType>)ViewData["EventTypes"], "EventTypeID", "Name"))">
+                    <option value="">-- Select Event Type --</option>
+                </select>
+                <span asp-validation-for="EventTypeID" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace PoeApp.Controllers
 {
@@ -15,15 +16,35 @@ namespace PoeApp.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchType, int? venueId, DateTime? startDate, DateTime? endDate)
         {
-            var events = await _context.Event.Include(e => e.Venue).ToListAsync();
-            return View(events);
+            var events = _context.Event
+                .Include(e => e.Venue)
+                .Include(e => e.EventType)
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchType))
+                events = events.Where(e => e.EventType.Name == searchType);
+
+            if (venueId.HasValue)
+                events = events.Where(e => e.VenueID == venueId);
+
+            if (startDate.HasValue && endDate.HasValue)
+                events = events.Where(e => e.EventDate >= startDate && e.EventDate <= endDate);
+
+            ViewData["Venue"] = _context.Venue.ToList();
+
+            ViewData["EventTypes"] = _context.EventType.ToList();
+
+            return View(await events.ToListAsync());
         }
 
         public IActionResult Create()
         {
-            ViewData["Venue"] = _context.Venue.ToList();
+            ViewBag.Venue = _context.Venue.ToList();
+
+            ViewData["EventTypes"] = _context.EventType.ToList();
+
             return View();
         }
 
@@ -39,7 +60,10 @@ namespace PoeApp.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["Venue"] = _context.Venue.ToList();
+            ViewBag.Venue = _context.Venue.ToList();
+
+            ViewData["EventTypes"] = _context.EventType.ToList();
+
             return View(@events);
         }
 
@@ -94,7 +118,9 @@ namespace PoeApp.Controllers
             var @events = await _context.Event.FindAsync(id);
             if (@events == null) return NotFound();
 
-            ViewData["VenueID"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(await _context.Venue.ToListAsync(), "VenueID", "VenueName", events.VenueID);
+            ViewBag.VenueID = new SelectList(await _context.Venue.ToListAsync(), "VenueID", "VenueName", events.VenueID);
+
+            ViewData["EventTypes"] = _context.EventType.ToList();
 
             return View(@events);
         }
@@ -113,7 +139,9 @@ namespace PoeApp.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["VenueID"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(await _context.Venue.ToListAsync(), "VenueID", "VenueName", events.VenueID);
+            ViewBag.VenueID = new SelectList(await _context.Venue.ToListAsync(), "VenueID", "VenueName", events.VenueID);
+
+            ViewData["EventTypes"] = _context.EventType.ToList();
             return View(@events);
         }
     }

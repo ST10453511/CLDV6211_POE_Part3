@@ -4,7 +4,51 @@
     ViewData["Title"] = "Event Info";
 }
 
-<h1>Event</h1>
+<h1>Index</h1>
+
+<form method="get" class="mb-4">
+    <div class="row">
+        <div class="col-md-3">
+            <label>Event Type</Label>
+            <select name="searchType" class="form-control">
+                <option value="">-- All Types --</option>
+                @foreach (var type in (List<EventType>)ViewData["EventTypes"])
+                {
+                    <option value="@type.Name">@type.Name</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label>Venue</Label>
+            <select name="venueId" class="form-control">
+                <option value="">-- All Venues --</option>
+                @foreach (var venue in (List<Venue>)ViewData["Venue"])
+                {
+                    <option value="@venue.VenueID">@venue.VenueName</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label>Start Date</label>
+            <input type="date" name="startDate" class="form-control" />
+        </div>
+        <div class="col-md-3">
+            <label>End Date</label>
+            <input type="date" name="endDate" class="form-control" />
+        </div>
+    </div>
+    <div class="row mt-3">
+    <div class="col-md-12 d-flex justify-content-start">
+        <button type="submit" class="btn btn-primary btn-sm me-2">
+            <i class="bi bi-funnel-fill"></i> Filter
+        </button>
+        <a href="/Event/Index" class="btn btn-secondary btn-sm">
+            <i class="bi bi-x-circle-fill"></i> Clear
+        </a>
+    </div>
+    </div>
+</form>
+
 
 @if (TempData["ErrorMessage"] != null)
 {

@@ -10,5 +10,7 @@ namespace PoeApp.Models
         public string Description { get; set; }
         public int VenueID { get; set; }
         public Venue? Venue { get; set; }
+        public int? EventTypeID { get; set; }
+        public EventType? EventType { get; set; }
     }
 }

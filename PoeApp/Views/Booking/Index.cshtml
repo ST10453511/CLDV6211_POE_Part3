@@ -5,12 +5,17 @@
 
 <h1>Booking</h1>
 
-<form asp-action="Index" method="get">
-    <div class="form-group mb-3">
-        <input type="text" name="searchString" class="form-control" placeholder="Search Booking..." value="@Context.Request.Query["searchString"]" />
-    </div>
-    <button type="submit" class="btn btn-primary">Search</button>
-</form>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <form asp-action="Index" method="get" class="d-flex flex-grow-1 me-3">
+        <input type="text" name="searchString" class="form-control me-2" placeholder="Search Booking..." value="@Context.Request.Query["searchString"]" />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <a asp-action="Create" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i> Create New
+    </a>
+</div>
 
 @if (TempData["ErrorMessage"] != null)
 {
@@ -24,22 +29,6 @@
         @TempData["SuccessMessage"]
     </div>
 }
-
-@if (!ViewData.ModelState.IsValid)
-{
-    foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
-    {
-        <div class="alert alert-danger">
-            @error.ErrorMessage
-        </div>
-    }
-}
-
-<p>
-    <a asp-action="Create" class="btn btn-primary btn-sm">
-        <i class="bi bi-plus-circle"></i> Create New
-    </a>
-</p>
 
 
 <table class="table">
